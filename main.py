@@ -1,38 +1,40 @@
 def main():
     book_path = "books/frankenstein.txt"
-    book_text = getBookText(book_path)
-    word_count = wordCount(book_text)
-    char_count = countChars(book_text)
+    book_text = get_book_text(book_path)
+    word_count = count_words(book_text)
+    char_count = count_chars(book_text)
 
-    printReport(book_path, word_count, char_count)
+    print_report(book_path, word_count, char_count)
 
 
-def getBookText(inString):
-    with open(inString) as f:
+def get_book_text(in_string):
+    with open(in_string) as f:
         return f.read()
 
 
-def wordCount(file_text):
+def count_words(file_text):
     return len(file_text.split())
 
 
-def countChars(inString):
-    tempString = inString.lower()
-    countDict = {}
+def count_chars(inString):
+    temp_string = inString.lower()
+    count_dict = {}
 
-    for char in tempString:
+    for char in temp_string:
         # not normally a fan of nested ifs, but this is easy
         if char.isalpha():
-            if char in countDict:
-                countDict[char] += 1
+            if char in count_dict:
+                count_dict[char] += 1
             else:
-                countDict[char] = 1
+                count_dict[char] = 1
 
     # Return the dict, sorted by from highest to lowest
-    return dict(sorted(countDict.items(), key=lambda key_val: key_val[1], reverse=True))
+    return dict(
+        sorted(count_dict.items(), key=lambda key_val: key_val[1], reverse=True)
+    )
 
 
-def printReport(book_path, word_count, char_count):
+def print_report(book_path, word_count, char_count):
     print(f"--- Begin Report of: {book_path} ---")
     print(f"Word Count: {word_count} words found in document")
     print()
