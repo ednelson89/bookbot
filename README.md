@@ -4,7 +4,7 @@ Boot.Dev - command-line application in Python that does static analysis on text 
 
 In order for this application to work, you will need to have a .txt file available to run. I recommend placing it in the books directory of this project, but relative pathing should work.
 
-For ex.
+For example:
 
 - Both test.txt and the project folder are placed in the user folder within /home. The correct path to input would be:
   `../test.txt`
