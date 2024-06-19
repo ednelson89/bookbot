@@ -12,7 +12,7 @@ def main():
 
 def get_path():
     print(
-        "Please provide the relative path to your .txt file, or pass nothing to view a demo:"
+        "Please provide the path to your .txt file (relative to this application), or pass nothing to view a demo:"
     )
     temp_path = input()
 
