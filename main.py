@@ -1,5 +1,8 @@
+import sys
+
+
 def main():
-    book_path = "books/frankenstein.txt"
+    book_path = get_path()
     book_text = get_book_text(book_path)
     word_count = count_words(book_text)
     char_count = count_chars(book_text)
@@ -7,9 +10,27 @@ def main():
     print_report(book_path, word_count, char_count)
 
 
-def get_book_text(in_string):
-    with open(in_string) as f:
-        return f.read()
+def get_path():
+    print(
+        "Please provide the relative path to your .txt file, or pass nothing to view a demo:"
+    )
+    temp_path = input()
+
+    if not temp_path:
+        print("You have not provided a path; a demo file will be used instead.")
+        print("-----------------------------------------------")
+        temp_path = "books/frankenstein.txt"
+
+    return temp_path
+
+
+def get_book_text(in_path):
+    try:
+        with open(in_path) as f:
+            return f.read()
+    except:
+        print("Oops, the path you provided failed; the program will close.")
+        sys.exit(0)
 
 
 def count_words(file_text):
